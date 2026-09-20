@@ -9,17 +9,30 @@ using namespace std;
 
 //stores soccer player name, goals for each game and other information
 struct Player {
-    string name;
-    int jersey;
-    int games;
-    int *goals;
+    string name; //name of the soccer player
+    int jersey; //jersey number
+    int games; // number of games played
+    int *goals; // dynamic array pointer
 
 };
-
-void inputPlater(Player*);
+//prototypes
+void inputPlayer(Player*);
 void displayPlayer(Player*);
 
 int main() {
+
+    int teamSize;
+
+    cout << "How many players in the team: ";
+    cin >> teamSize;
+    cin.ignore();
+
+    //create the dynamic array of players in the team
+    Player *team = nullptr;
+    team = new Player[teamSize];
+
+     
+
     
     return 0;
 }
