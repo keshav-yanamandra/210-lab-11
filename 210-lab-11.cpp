@@ -14,6 +14,15 @@ struct Player {
     int games; // number of games played
     int *goals; // dynamic array pointer
 
+    // free dynamic goals array when the player is deleted
+    ~Player() {
+        if (goals != nullptr) {
+            delete [] goals;
+        }
+
+        goals = nullptr;
+    }
+
 };
 
 //prototypes
@@ -39,6 +48,15 @@ int main() {
         inputPlayer(&team[i]);
     }
     
+    cout << endl;
+    cout << "=== TEAM LIST ===" << endl;
+    cout << "-----------------" << endl;
+    
+
+    for (int i = 0; i < teamSize; i++) {
+        displayPlayer(&team[i]);
+    }
+
     //I forgot to delete before
     delete [] team;
 
@@ -63,4 +81,18 @@ void inputPlayer(Player *sptr) {
         cin >> sptr->goals[i];
     }
 
+    cin.ignore();
 }
+
+void displayPlayer(Player *sptr) {
+    cout << "Player Name:    " << sptr->name << endl;
+    cout << "Jersey number:  " << sptr->jersey << endl;
+    cout << "Games played:   " << sptr->games << endl;
+    cout << "Goals per game: ";
+    for (int i = 0; i < sptr->games; i++) {
+        cout << sptr->goals[i] << " ";
+    }
+
+    cout << endl << endl;
+}
+
