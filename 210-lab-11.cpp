@@ -49,6 +49,18 @@ void inputPlayer(Player *sptr) {
     cout << "Name: ";
     getline(cin, sptr->name);
 
-    // need to define more inputs
+        cout << "Jersey number: ";
+    cin >> sptr->jersey;
+
+    cout << "Matches played: ";
+    cin >> sptr->games;
+
+    // dynamic array for this players goals - we need goals for each game and this was confusing for me
+    sptr->goals = new int[sptr->games];
+
+    for (int i = 0; i < sptr->games; i++) {
+        cout << "Goals in match " << i << ": ";
+        cin >> sptr->goals[i];
+    }
 
 }
